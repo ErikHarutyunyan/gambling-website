@@ -22,7 +22,7 @@ You can also access the administrative dashboard at [dashboard.bdtwin.com](https
 
 This repository is organized into two main folders:
 
-1. **Website Codes| player:** This folder contains the source code for the player-facing website. It includes frontend components, logic, and design elements to provide an engaging gaming experience to users.
+1. **Website Codes | player:** This folder contains the source code for the player-facing website. It includes frontend components, logic, and design elements to provide an engaging gaming experience to users.
 
 2. **Dashboard Panel:** The dashboard panel folder contains the code for the administrative dashboard. This is where administrators can manage user accounts, games, transactions, and other crucial aspects of the platform.
 
