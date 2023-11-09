@@ -1,6 +1,6 @@
 import styled from "styled-components";
+import { device } from "../../themes/Breakpoints";
 export const Wrapper = styled.div`
- 
   p {
     margin-top: 24px;
     margin-bottom: 17px;
@@ -22,7 +22,6 @@ export const Wrapper = styled.div`
         th {
           :first-child {
             border-top-left-radius: 8px;
-           
           }
           :last-child {
             border-top-right-radius: 8px;
@@ -49,6 +48,7 @@ export const Wrapper = styled.div`
     tr {
       background-color: var(--color-gray);
       border-radius: 8px;
+
       :last-child {
         td {
           border-bottom: 0;
@@ -61,9 +61,13 @@ export const Wrapper = styled.div`
       margin: 0;
       padding: 16px 64px 16px 24px;
       border-right: 1px solid #fff;
+      text-wrap: nowrap;
 
       :last-child {
         border-right: 0;
+      }
+      @media ${device.tabletL} {
+        /* padding: 10px 10px 10px 10px; */
       }
     }
   }
@@ -81,6 +85,12 @@ export const Wrapper = styled.div`
     padding: 8px 9px 8px 16px;
     ::-webkit-calendar-picker-indicator {
       filter: invert(1);
+    }
+  }
+  @media ${device.tabletL} {
+    th,
+    td {
+      font-size: 12px;
     }
   }
 `;

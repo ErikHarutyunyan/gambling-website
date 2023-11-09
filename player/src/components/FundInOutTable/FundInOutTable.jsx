@@ -108,56 +108,63 @@ const FundInOutTable = () => {
         />
       </InputDate>
       <p>User: john.wick</p>
-      <table {...getTableProps()}>
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        {data.length ? (
-          <>
-            <tbody {...getTableBodyProps()}>
-              {page.map((row, i) => {
-                prepareRow(row);
-                return (
-                  <tr {...row.getRowProps()}>
-                    {row.cells.map((cell) => {
-                      if (cell.column.Header === "Date") {
-                        return (
-                          <td {...cell.getCellProps()}>
-                            {formatDateMDY(cell.value)}
-                          </td>
-                        );
-                      } else {
-                        return (
-                          <td {...cell.getCellProps()}>
-                            {cell.render("Cell")}
-                          </td>
-                        );
-                      }
-                    })}
-                  </tr>
-                );
-              })}
+      <div style={{ overflowX: "auto" }}>
+        <table {...getTableProps()}>
+          <thead>
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <th {...column.getHeaderProps()}>
+                    {column.render("Header")}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          {data.length ? (
+            <>
+              <tbody {...getTableBodyProps()}>
+                {page.map((row, i) => {
+                  prepareRow(row);
+                  return (
+                    <tr {...row.getRowProps()}>
+                      {row.cells.map((cell) => {
+                        if (cell.column.Header === "Date") {
+                          return (
+                            <td {...cell.getCellProps()}>
+                              {formatDateMDY(cell.value)}
+                            </td>
+                          );
+                        } else {
+                          return (
+                            <td {...cell.getCellProps()}>
+                              {cell.render("Cell")}
+                            </td>
+                          );
+                        }
+                      })}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </>
+          ) : (
+            <tbody>
+              <tr>
+                <td colspan="6" style={{ textAlign: "center" }}>
+                  No data found
+                </td>
+              </tr>
             </tbody>
-          </>
-        ) : (
-          <tbody>
-            <tr>
-              <td colspan="6" style={{textAlign: "center"}}>No data found</td>
-            </tr>
-          </tbody>
-        )}
-      </table>
-      <Pagination
-        currentPage={pageIndex + 1}
-        totalPages={pageOptions.length}
-        onPageChange={gotoPage}
-      />
+          )}
+        </table>
+
+        <Pagination
+          currentPage={pageIndex + 1}
+          totalPages={pageOptions.length}
+          onPageChange={gotoPage}
+        />
+      </div>
     </Wrapper>
   );
 };

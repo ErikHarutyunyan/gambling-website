@@ -4,25 +4,33 @@ import {
   Container,
   ErrorWrap,
   GameWrap,
-  NavWrap,
   Wrapper,
 } from "./SingleGame.styles";
 import { useDispatch, useSelector } from "react-redux";
 import { resetErrorGame, selectGame } from "../../app/features/game/gameSlice";
 import Spinner from "../../components/Spinner/Spinner";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getGameDate } from "../../app/features/game/gameActions";
 import Subheading from "../../components/Subheading";
+import { selectUser } from "../../app/features/user/userSlice";
+import { changeBallance } from "../../app/features/user/userActions";
+import Background from "../../components/Background/Background";
 const SingleGame = () => {
   const { id } = useParams();
   const { gameDate, loading, error } = useSelector(selectGame);
-  const navigate = useNavigate()
+  console.log('gameDate :', gameDate);
+  const {userInfo} = useSelector(selectUser)
+  // const navigate = useNavigate()
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getGameDate(id));
-    return () => dispatch(resetErrorGame());
+    return () => {
+      dispatch(resetErrorGame())
+      dispatch(changeBallance(userInfo?.user?.id));
+
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
@@ -33,30 +41,13 @@ const SingleGame = () => {
   return (
     <Wrapper>
       <Subheading />
+      {/* <Background /> */}
       <Container>
-        <NavWrap>
-          <div onClick={() => navigate(-1)}>
-            <svg
-              stroke="currentColor"
-              fill="none"
-              strokeWidth={2}
-              viewBox="0 0 24 24"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              height="1em"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line x1={19} y1={12} x2={5} y2={12} />
-              <polyline points="12 19 5 12 12 5" />
-            </svg>
-          </div>
-        </NavWrap>
         {!error ? (
           <GameWrap>
             <iframe
               src={`${gameDate?.game?.response}&gamesession_id=${gameDate?.game.gamesession_id}&sessionid=${gameDate?.game.sessionid}`}
-              title="myFrame"
+              title="iframe"
             >
               <p>Sometime Wrong</p>
             </iframe>

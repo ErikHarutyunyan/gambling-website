@@ -21,6 +21,7 @@ export const Container = styled.div`
   display: flex;
   gap: 32px;
   flex-wrap: wrap;
+ 
 `;
 export const BtnWrap = styled.div`
   display: flex;

@@ -27,7 +27,10 @@ import {
   SPORTS,
   SPORTS_BETS,
   SPORTS_STATS,
-  MY_PROFILE
+  MY_PROFILE,
+  CASINO,
+  CASINO_STATS,
+  CASINO_BETS
 } from "./route-path";
 // import TokenService from "../services/token.service";
 // Pages
@@ -46,7 +49,8 @@ import {
   Agents,
   Players,
   ViewPerson,
-  MyProfile
+  MyProfile,
+  CasinoStats
 
 } from "../pages";
 import { SportsStats } from "../pages/Sports";
@@ -69,7 +73,7 @@ const router = createBrowserRouter(
         <Route path={TRANSACTIONS}>
           <Route path={TRANSACTIONS_WITHDRAW} element={<WithdrawRequests />} />
           <Route path={TRANSACTIONS_DEPOSIT} element={<DepositsRequests />} />
-          
+
           <Route
             path={TRANSACTIONS_MANUAL_WITHDRAW}
             element={<ManualWithdraw />}
@@ -78,6 +82,10 @@ const router = createBrowserRouter(
             path={TRANSACTIONS_MANUAL_DEPOSIT}
             element={<ManualDeposit />}
           />
+        </Route>
+        <Route path={CASINO}>
+          <Route path={CASINO_STATS} element={<CasinoStats />} />
+          {/* <Route path={CASINO_BETS} element={<CasinoStats />} /> */}
         </Route>
         <Route path={SUPPER_AGENT} element={<SuperAgents />} />
         <Route path={AGENTS} element={<Agents />} />
@@ -90,7 +98,7 @@ const router = createBrowserRouter(
           <Route path={SPORTS_STATS} element={<SportsStats />} />
           <Route path={SPORTS_BETS} element={<SportsStats />} />
         </Route>
-        <Route path={MY_PROFILE} element={<MyProfile />}/>
+        <Route path={MY_PROFILE} element={<MyProfile />} />
       </Route>
 
       <Route path={NOT_FOUND_PAGE} element={<NotFoundPage />} />

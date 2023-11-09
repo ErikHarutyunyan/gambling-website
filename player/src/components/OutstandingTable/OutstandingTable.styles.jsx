@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../themes/Breakpoints";
 export const Wrapper = styled.div`
   p {
     margin-top: 24px;
@@ -63,7 +64,7 @@ export const Wrapper = styled.div`
       /* border: 1px solid var(--color-white); */
       /* border-radius: 8px; */
       border-right: 1px solid #fff;
-
+      text-wrap: nowrap;
       :last-child {
         border-right: 0;
       }
@@ -83,6 +84,14 @@ export const Wrapper = styled.div`
     padding: 8px 9px 8px 16px;
     ::-webkit-calendar-picker-indicator {
       filter: invert(1);
+    }
+  }
+  @media ${device.tabletL} {
+    th,
+    td {
+      font-size: 12px;
+      padding: 10px 10px 10px 10px;
+      border-right: 1px solid #fff;
     }
   }
 `;

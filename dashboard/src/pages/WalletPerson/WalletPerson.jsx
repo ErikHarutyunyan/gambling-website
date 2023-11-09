@@ -63,7 +63,7 @@ const WalletPerson = () => {
   });
   const submitForm = async (data) => {
     // await dispatch
-    let ballance = switchFlag
+    let balance = switchFlag
       ? { ...data, sender: userInfo?.user.id, recipient: id }
       : {
           ...data,
@@ -76,9 +76,9 @@ const WalletPerson = () => {
       : { message: "WithDraw Done" };
 
     if (switchFlag) {
-      dispatch(coinTransfer({ ballance, message, switchFlag }));
+      dispatch(coinTransfer({ balance, message, switchFlag }));
     } else {
-      dispatch(coinWithdraw({ ballance, message, switchFlag }));
+      dispatch(coinWithdraw({ balance, message, switchFlag }));
     }
     reset();
   };

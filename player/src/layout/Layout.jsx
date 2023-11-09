@@ -1,6 +1,7 @@
 import React from 'react'
 import { Outlet, ScrollRestoration} from "react-router-dom"
 import Header from '../components/Header/Header';
+import Background from '../components/Background/Background';
 const Layout = () => {
 
    let getKey = React.useCallback(
@@ -17,6 +18,7 @@ const Layout = () => {
     <>
       <Header />
       <main>
+        <Background />
         <Outlet />
       </main>
       <ScrollRestoration getKey={getKey} />

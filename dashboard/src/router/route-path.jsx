@@ -39,7 +39,7 @@ export const SPORTS_BETS = '/sports/bets'
 // Casino
 export const CASINO = '/casino'
 export const CASINO_STATS = '/casino/stats'
-export const CASINO_BETS = 'casino/bets'
+export const CASINO_BETS = '/casino/bets'
 
 // MyProfile
 export const MY_PROFILE = '/my-profile'

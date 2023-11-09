@@ -1,18 +1,40 @@
 import styled from "styled-components";
+import { device } from "../../themes/Breakpoints";
 export const Wrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 2;
+  background-color: var(--color-gray);
 `;
 export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex: 1;
+  gap: 5px;
+  &.main-container {
+    padding: 29px 15px;
+  }
+  @media ${device.tablet} {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
 `;
 export const LogoWrap = styled.div`
   a {
     display: block;
+  }
+  @media ${device.mobileL} {
+    & img {
+      width: 80px;
+    }
+  }
+  @media ${device.mobileM} {
+    & img {
+      width: 60px;
+    }
   }
 `;
 
@@ -63,11 +85,39 @@ export const ActionNav = styled.div`
       }
     }
   }
+  @media ${device.tablet} {
+    flex: 1;
+    ul li.defaultList:has(p) {
+      margin-right: 8px;
+    }
+    ul li.defaultList p {
+      padding: 7px 17px !important;
+      font-size: 16px;
+    }
+    ul li.defaultList a {
+      padding: 7px 17px !important;
+      font-size: 16px;
+    }
+  }
 `;
 
 export const Lists = styled.ul`
   display: flex;
   align-items: center;
+
+  &.menu-help {
+    gap: 32px;
+  }
+  @media ${device.tablet} {
+    &.menu-actions {
+      justify-content: space-between;
+    }
+  }
+  @media ${device.mobileX} {
+    &.menu-help {
+      gap: 10px;
+    }
+  }
 `;
 export const List = styled.li`
   color: var(--color-white);
@@ -89,44 +139,10 @@ export const List = styled.li`
   &.contact {
     display: flex;
     align-items: center;
-    padding: 29px 32px;
-    svg {
-      width: 30px;
-    }
-    &:hover {
-      .cls-1 {
-        stroke: var(--color-blue);
-      }
-
-      .cls-2 {
-        stroke: var(--color-blue);
-      }
-    }
-    p {
-      padding-left: 15px;
-      padding-right: 15px;
-    }
-    .cls-1,
-    .cls-2 {
-      fill: none;
-      stroke: #fff;
-      stroke-linecap: round;
-      stroke-width: 1.5px;
-      transition: var(--transition);
-    }
-    .cls-1:hover {
-      stroke: var(--color-blue);
-    }
-
-    .cls-2:hover {
-      stroke: var(--color-blue);
-    }
-    .cls-1 {
-      stroke-linejoin: bevel;
-    }
-    .cls-2 {
-      stroke-linejoin: round;
-      fill-rule: evenodd;
+    /* padding: 29px 32px; */
+    img {
+      width: 32px;
+      cursor: pointer;
     }
   }
   &.dFlex {
@@ -138,6 +154,7 @@ export const List = styled.li`
     line-height: 27px;
     margin-right: 32px;
     cursor: pointer;
+    /* display: none; */
   }
   &.winDep {
     margin-right: 32px;
@@ -158,7 +175,7 @@ export const List = styled.li`
     font-weight: 400;
     font-size: 18px;
     line-height: 27px;
-    padding: 29px 32px;
+    /* padding: 29px 32px; */
     cursor: pointer;
   }
   a {
@@ -166,7 +183,7 @@ export const List = styled.li`
     font-weight: 400;
     font-size: 18px;
     line-height: 27px;
-    padding: 29px 32px;
+    /* padding: 29px 32px; */
     &.active {
       border-bottom: 3px solid;
       border-image-slice: 1;
@@ -180,5 +197,77 @@ export const List = styled.li`
   a:hover {
     transition: var(--transition);
     /* color: var(--color-blue); */
+  }
+  &.dFlex.mobile-dFlex {
+    display: none;
+  }
+
+  @media ${device.laptop} {
+    &.winDep {
+      margin-right: 15px;
+      a {
+        padding: 6px 10px;
+        font-size: 16px;
+      }
+    }
+    &.dFlex {
+      gap: 8px;
+      font-size: 16px;
+      line-height: 20px;
+      margin-right: 25px;
+      font-size: 16px;
+
+      svg {
+        width: 32px;
+      }
+    }
+  }
+  @media ${device.tablet} {
+    &.dFlex {
+      display: none;
+    }
+    &.dFlex.mobile-dFlex {
+      display: flex;
+    }
+  }
+  @media ${device.mobileX} {
+    &.winDep {
+      margin-right: 0px;
+      a {
+        padding: 3px 8px;
+        font-size: 14px;
+      }
+    }
+  }
+  @media ${device.mobileL} {
+    &.contact {
+      img {
+        width: 26px;
+      }
+    }
+    &:has(.notification) {
+      svg {
+        width: 30px;
+      }
+    }
+    &.dFlex.mobile-dFlex {
+      font-size: 14px;
+      svg {
+        width: 26px;
+      }
+    }
+  }
+  @media ${device.mobileM} {
+    &.contact {
+      img {
+        width: 25px;
+      }
+    }
+  }
+`;
+
+export const NavAction = styled.div`
+  @media ${device.tablet} {
+    width: 100%;
   }
 `;

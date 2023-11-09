@@ -8,7 +8,21 @@ import {
 // import PrivateRouter from './PrivateRouter'
 
 import Layout from "../layout/Layout";
-import { CALL_AGENT, DEPOSIT, FUND_IN_OUT, HOME,  NOTIFICATIONS, NOT_FOUND_PAGE, OUTSTANDING, PLAYER, PLAYER_PROFILE, SINGLE_GAME, SINGLE_GAME_ID, TRANSACTIONS, WITHDRAW } from "./route-path";
+import {
+  CALL_AGENT,
+  DEPOSIT,
+  FUND_IN_OUT,
+  GAME_LISTS,
+  HOME,
+  NOTIFICATIONS,
+  NOT_FOUND_PAGE,
+  OUTSTANDING,
+  PLAYER,
+  PLAYER_PROFILE,
+  SINGLE_GAME_ID,
+  TRANSACTIONS,
+  WITHDRAW,
+} from "./route-path";
 // import TokenService from "../services/token.service";
 // Pages
 import {
@@ -24,6 +38,7 @@ import {
   CallAgent,
   AgentList,
   SingleGame,
+  GameList,
 } from "../pages";
 
 // import PrivateRouter from "./PrivateRouter";
@@ -40,6 +55,7 @@ const router = createBrowserRouter(
         <Route path={OUTSTANDING} element={<Outstanding />} />
         <Route path={TRANSACTIONS} element={<Transactions />} />
       </Route>
+      <Route path={GAME_LISTS} element={<GameList/>}/>
       <Route path={SINGLE_GAME_ID} element={<SingleGame />} />
       <Route path={NOTIFICATIONS} element={<Notifications />} />
       <Route path={WITHDRAW} element={<AgentList />} />

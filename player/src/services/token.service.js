@@ -14,6 +14,11 @@ class TokenService {
     user.access = token;
     localStorage.setItem("player", JSON.stringify(user));
   }
+  static updateUser(newUser) {
+    let user = JSON.parse(localStorage.getItem("player"));
+    user.user = newUser;
+    localStorage.setItem("user", JSON.stringify(user));
+  }
 
   static getUser() {
     return JSON.parse(localStorage.getItem("player"));

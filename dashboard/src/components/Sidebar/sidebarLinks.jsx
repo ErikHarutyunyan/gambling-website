@@ -115,11 +115,11 @@ export const sidebarLinks = [
         name: "Stats",
         url: CASINO_STATS,
       },
-      {
-        id: uuidv4(),
-        name: "Bets list",
-        url: CASINO_BETS,
-      },
+      // {
+      //   id: uuidv4(),
+      //   name: "Bets list",
+      //   url: CASINO_BETS,
+      // },
     ],
   },
 ];

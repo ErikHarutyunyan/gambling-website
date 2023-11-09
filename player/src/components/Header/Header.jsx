@@ -9,14 +9,15 @@ import {
   List,
   ActionNav,
   Container,
+  NavAction,
 } from "./Header.styles";
 import { ImgWrapper } from "../../themes/GlobalStyle";
 // Images
 import logo from "../../assets/images/logo.png";
-import { mainLinks } from "./dataLinks";
+// import { mainLinks } from "./dataLinks";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
-  CONTACT_US,
+  // CONTACT_US,
   WITHDRAW,
   DEPOSIT,
   CALL_AGENT,
@@ -27,15 +28,15 @@ import ContactUs from "../ContactUs";
 import { Login } from "../../pages";
 // import { ResetPassword, ForgotPassword, Register } from "../../pages";
 import UserAction from "../UserAction/UserAction";
-import { BalanceIcon } from "../Icons/Icons";
+import { BalanceIcon, BalanceIconM, BurgerMenu } from "../Icons/Icons";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, setLoginModal } from "../../app/features/user/userSlice";
 import { useEffect } from "react";
-
+import contactImg from "../../assets/images/contact.png";
 const Header = () => {
   const navigate = useNavigate();
   const { userInfo, loginModal } = useSelector(selectUser);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const {
     isOpen: isOpenContact,
     openModal: openModalContact,
@@ -53,11 +54,12 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-  if(loginModal) {
-    openModalLogin()
-    dispatch(setLoginModal(false));
-  }
-  },[loginModal])
+    if (loginModal) {
+      openModalLogin();
+      dispatch(setLoginModal(false));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loginModal]);
   return (
     <Wrapper>
       <Container className="main-container">
@@ -74,28 +76,9 @@ const Header = () => {
           </Link>
         </LogoWrap>
         <Nav>
-          <Lists>
+          <Lists className="menu-help">
             <List onClick={openModalContact} className="contact">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="15px"
-                viewBox="0 0 24 24"
-              >
-                <g id="ic-contact-mail">
-                  <rect
-                    className="cls-1"
-                    x={2}
-                    y={5}
-                    width={20}
-                    height={14}
-                    rx={2}
-                  />
-                  <path
-                    className="cls-2"
-                    d="M2.58,5.59l8.23,8.22a2,2,0,0,0,2.83,0l8-8"
-                  />
-                </g>
-              </svg>
+              <img src={contactImg} alt={"contact"} />
               {/* <p>Contact us</p> */}
             </List>
 
@@ -105,7 +88,6 @@ const Header = () => {
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="30px"
-                    
                     viewBox="0 0 24 24"
                     fill="none"
                   >
@@ -123,29 +105,51 @@ const Header = () => {
                         strokeLinejoin="round"
                       />
                     </g>
-                  
                   </svg>
                 </NavLink>
+              </List>
+            )}
+            {userInfo && (
+              <List className="dFlex mobile-dFlex">
+                <BalanceIconM />
+                Balance: {(userInfo && userInfo.user.balance.toFixed(2)) || "0"}
               </List>
             )}
           </Lists>
         </Nav>
         <ActionNav>
-          <Lists>
-            {!userInfo && (
-              <>
-                <List className="defaultList">
-                  <p onClick={openModalLogin}>Login</p>
-                </List>
-                <List className="defaultList">
-                  <Link to={CALL_AGENT} target="_blank">
-                    Sign Up
-                  </Link>
-                </List>
-              </>
-            )}
-            {userInfo && (
-              <>
+          {!userInfo && (
+            <Lists>
+              <List className="defaultList">
+                <p onClick={openModalLogin}>Login</p>
+              </List>
+              <List className="defaultList">
+                <Link to={CALL_AGENT} target="_blank">
+                  Sign Up
+                </Link>
+              </List>
+            </Lists>
+          )}
+
+          {userInfo && (
+            <NavAction>
+              {/* <BurgerMenu className="burger" width={"35px"} height={"auto"} /> */}
+
+              {/* <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 16 16"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"
+                  ></path>
+                </svg> */}
+              <Lists className="menu-actions">
                 <List className="winDep">
                   <NavLink to={WITHDRAW}>Withdraw</NavLink>
                 </List>
@@ -154,14 +158,15 @@ const Header = () => {
                 </List>
                 <List className="dFlex">
                   <BalanceIcon />
-                  Balance: {(userInfo && userInfo.user.balance) || "0"}
+                  Balance:{" "}
+                  {(userInfo && userInfo.user.balance.toFixed(2)) || "0"}
                 </List>
                 <List>
                   <UserAction player={userInfo?.user} />
                 </List>
-              </>
-            )}
-          </Lists>
+              </Lists>
+            </NavAction>
+          )}
         </ActionNav>
       </Container>
 

@@ -317,7 +317,7 @@ export const changeUserPass = createAsyncThunk(
 
 export const sendWallet = createAsyncThunk(
   "user/sendWallet",
-  async (ballance, { rejectWithValue, dispatch }) => {
+  async (balance, { rejectWithValue, dispatch }) => {
     try {
       // configure header's Content-Type as JSON
       const config = {
@@ -328,7 +328,7 @@ export const sendWallet = createAsyncThunk(
 
       const { data } = await axiosInstance.post(
         `${API_ENDPOINT}coin-transfer`,
-        ballance,
+        balance,
         config
       );
       return data;
@@ -404,7 +404,7 @@ export const getUserAgents = createAsyncThunk(
 
 export const coinTransfer = createAsyncThunk(
   "user/coinTransfer",
-  async (ballance, { rejectWithValue,dispatch }) => {
+  async (balance, { rejectWithValue,dispatch }) => {
     
  
     try {
@@ -417,19 +417,19 @@ export const coinTransfer = createAsyncThunk(
 
       const { data } = await axiosInstance.post(
         `${API_ENDPOINT}coin-transfer`,
-        ballance.ballance,
+        balance.balance,
         config
       );
       if (data.message)  {
 
         const userBalance = TokenService.getUserBalance();
-        const newBalance = ballance.switchFlag
-          ? userBalance - ballance.ballance.amount
-          : userBalance + ballance.ballance.amount;
+        const newBalance = balance.switchFlag
+          ? userBalance - balance.balance.amount
+          : userBalance + balance.balance.amount;
         const updateBalance = TokenService.updateUserBalance(newBalance);
     
         dispatch(updateUserInfo(updateBalance));
-        return ballance.message
+        return balance.message
       }
       if(!data.message) {
         throw new Error("Failed")
@@ -446,7 +446,7 @@ export const coinTransfer = createAsyncThunk(
 
 export const coinWithdraw = createAsyncThunk(
   "user/coinWithdraw",
-  async (ballance, { rejectWithValue, dispatch }) => {
+  async (balance, { rejectWithValue, dispatch }) => {
     try {
       // configure authorization header with user's token
       const config = {
@@ -457,18 +457,18 @@ export const coinWithdraw = createAsyncThunk(
 
       const { data } = await axiosInstance.post(
         `${API_ENDPOINT}coin-withdrawl`,
-        ballance.ballance,
+        balance.balance,
         config
       );
       if (data.message) {
         const userBalance = TokenService.getUserBalance();
-        const newBalance = ballance.switchFlag
-          ? userBalance - ballance.ballance.amount
-          : userBalance + ballance.ballance.amount;
+        const newBalance = balance.switchFlag
+          ? userBalance - balance.balance.amount
+          : userBalance + balance.balance.amount;
         const updateBalance = TokenService.updateUserBalance(newBalance);
 
         dispatch(updateUserInfo(updateBalance));
-        return ballance.message;
+        return balance.message;
       }
       if (!data.message) {
         throw new Error("Failed");

@@ -19,6 +19,7 @@ import NotFoundPage from "./NotFoundPage/NotFoundPage.lazy";
 import ErrorPage from "./ErrorPage";
 
 import SingleGame from "../pages/SingleGame/SingleGame";
+import GameList from "./GameLists/GameLists"
 export {
   Home,
   About,
@@ -38,4 +39,5 @@ export {
   // Deposit,
   CallAgent,
   SingleGame,
+  GameList,
 };

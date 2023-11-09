@@ -7,11 +7,12 @@ export const GameWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding:100px 15px;
+  padding:50px 15px;
+  position: relative;
   iframe {
     max-width: 1200px;
     width: 100%;
-    max-height: 900px;
+    max-height: 70vh;
     height: 100vh;
     border-radius: 8px;
   }
@@ -22,6 +23,7 @@ export const ErrorWrap = styled.div`
   margin-top: 150px;
   color:red;
   font-size: 50px;
+  position: relative;
 `;
 
 export const NavWrap = styled.div`

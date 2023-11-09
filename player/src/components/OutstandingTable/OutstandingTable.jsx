@@ -86,6 +86,8 @@ const OutstandingTable = () => {
         />
       </InputDate>
       <p>User: john.wick</p>
+      <div style={{overflowX:"auto"}}>
+
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -138,6 +140,7 @@ const OutstandingTable = () => {
         totalPages={pageOptions.length}
         onPageChange={gotoPage}
       />
+      </div>
     </Wrapper>
   );
 };

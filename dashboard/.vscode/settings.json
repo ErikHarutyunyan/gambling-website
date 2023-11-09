@@ -1,0 +1,6 @@
+{
+  "dotenv.enableAutocloaking": false,
+  "marquee.widgets.npm-stats.packageNames": [
+    "redux-structure"
+  ]
+}

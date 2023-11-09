@@ -9,6 +9,7 @@ export const Wrapper = styled.section`
     linear-gradient(130deg, #5a72c6 0%, #562e91 100%);
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
 `;
 
 export const Container = styled.div`
@@ -26,6 +27,7 @@ export const Container = styled.div`
     font-weight: 600;
     line-height: 124.8px;
   }
+  
 `;
 export const AgentInfo = styled.div`
   display: flex;

@@ -10,6 +10,11 @@ import {
   ManualDeposit,
 } from "./Transactions";
 
+// Casino
+import {
+  CasinoStats
+} from "./Casino"
+
 import SuperAgents from "./SuperAgents"
 import Agents from "./Agents"
 import Players from "./Players";
@@ -36,4 +41,5 @@ export {
   NotFoundPage,
   Players,
   MyProfile,
+  CasinoStats,
 };

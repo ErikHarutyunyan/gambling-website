@@ -89,7 +89,7 @@ const ViewPerson = () => {
                   {key === "balance" ? (
                     <WalletWrap>
                       <p>
-                        <span>Ballance</span>
+                        <span>Balance</span>
                         <span>{data[`${key}`]}</span>
                       </p>
                       

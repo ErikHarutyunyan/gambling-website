@@ -18,6 +18,8 @@ export const AGENT_LIST = '/agent-list'
 export const NOTIFICATIONS = '/notifications'
 export const SINGLE_GAME_ID = "/game/:id";
 export const SINGLE_GAME = "/game/";
+export const GAME = "/games/"
+export const GAME_LISTS = "/games/:type"
 
 
 export const NOT_FOUND_PAGE = "*";

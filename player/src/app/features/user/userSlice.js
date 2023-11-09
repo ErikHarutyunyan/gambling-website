@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  changeBallance,
   changeMyProfile,
   getUserDetails,
   getUsersByRole,
@@ -104,6 +105,19 @@ const userSlice = createSlice({
         state.agents = payload;
       })
       .addCase(getUsersByRole.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+      })
+      .addCase(changeBallance.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(changeBallance.fulfilled, (state, {payload}) => {
+        
+        state.loading = false;
+        state.userInfo.user = payload;
+      })
+      .addCase(changeBallance.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
       });

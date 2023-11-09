@@ -6,7 +6,7 @@ const CashCoinBalance = ({ cash="0"}) => {
     <Wrapper>
       <Container>
         <InfoItem>
-          <p>Ballance</p>
+          <p>Balance</p>
           <p>{cash}</p>
         </InfoItem>
       </Container>

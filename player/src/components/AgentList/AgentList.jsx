@@ -17,6 +17,7 @@ import Spinner from "../Spinner/Spinner";
 import { CALL_AGENT } from "../../router/route-path";
 
 const AdminInfo = () => {
+
   return (
     <div>
       <Title title={"Admin"} textAlign={"center"} />

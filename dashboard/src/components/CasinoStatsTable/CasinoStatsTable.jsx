@@ -1,0 +1,158 @@
+import React, { useMemo, useState } from "react";
+// Styles
+import { FormWrap, HeadItem, Wrapper } from "./CasinoStatsTable.styles";
+import { usePagination, useTable } from "react-table";
+import Pagination from "../Pagination/Pagination";
+import { formatDateMDY } from "../../utils/utils";
+import Title from "../Title";
+import CalendarDay from "../CalendarDay/CalendarDay";
+const CasinoStatsTable = () => {
+  const [data] = useState([]);
+  const columns = useMemo(
+    () => [
+      {
+        Header: "Game name",
+        accessor: "game-name",
+      },
+      {
+        Header: "Game type",
+        accessor: "game-type",
+      },
+      {
+        Header: "Casino",
+        accessor: "casino",
+      },
+      {
+        Header: "Bet count",
+        accessor: "bet-count",
+      },
+      {
+        Header: "Won count",
+        accessor: "won-count",
+      },
+      {
+        Header: "Bet amount",
+        accessor: "bet-amount",
+      },
+      {
+        Header: "Won amount",
+        accessor: "won-amount",
+      },
+    ],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    prepareRow,
+    page,
+    pageOptions,
+    gotoPage,
+    state: { pageIndex },
+  } = useTable(
+    {
+      columns,
+      data,
+      initialState: { pageIndex: 0 },
+    },
+    usePagination
+  );
+
+  return (
+    <Wrapper>
+      <HeadItem>
+        <div className="filter">
+          <Title title={"Casino Stats"} fontSize={"24px"} />
+          <FormWrap>
+            <form action="">
+              <div className="radio-wrap">
+                <div>
+                  <input
+                    type="radio"
+                    id="all-agents"
+                    name="All agents"
+                    // checked={!myUsers}
+                    // onChange={() => setMyUsers(false)}
+                  />
+                  <label for="all-agents">5 most played games</label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="my-agents"
+                    name="My agents"
+                    // checked={myUsers}
+                    // onChange={() => setMyUsers(true)}
+                  />
+                  <label for="my-agents">5 most visited casinos</label>
+                </div>
+               
+              </div>
+            </form>
+          </FormWrap>
+        </div>
+        <CalendarDay />
+      </HeadItem>
+      <div>
+        <table {...getTableProps()}>
+          <thead>
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <th {...column.getHeaderProps()}>
+                    {column.render("Header")}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          {data.length ? (
+            <>
+              <tbody {...getTableBodyProps()}>
+                {page.map((row, i) => {
+                  prepareRow(row);
+                  return (
+                    <tr {...row.getRowProps()}>
+                      {row.cells.map((cell) => {
+                        if (cell.column.Header === "Date") {
+                          return (
+                            <td {...cell.getCellProps()}>
+                              {formatDateMDY(cell.value)}
+                            </td>
+                          );
+                        } else {
+                          return (
+                            <td {...cell.getCellProps()}>
+                              {cell.render("Cell")}
+                            </td>
+                          );
+                        }
+                      })}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </>
+          ) : (
+            <tbody>
+              <tr>
+                <td colSpan="9" style={{ textAlign: "center" }}>
+                  No data found
+                </td>
+              </tr>
+            </tbody>
+          )}
+        </table>
+      </div>
+      <Pagination
+        currentPage={pageIndex + 1}
+        totalPages={pageOptions.length}
+        onPageChange={gotoPage}
+      />
+    </Wrapper>
+  );
+};
+
+export default CasinoStatsTable;

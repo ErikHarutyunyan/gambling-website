@@ -58,7 +58,7 @@ const SuperAgents = () => {
           return (
             <WalletWrap>
               <p>
-                <span>Ballance</span>
+                <span>Balance</span>
                 <span>{value}</span>
               </p>
             </WalletWrap>

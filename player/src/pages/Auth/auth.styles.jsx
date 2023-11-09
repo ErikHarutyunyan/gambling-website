@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../themes/Breakpoints";
 
 export const Wrapper = styled.div`
   color: var(--color-white);
@@ -13,6 +14,7 @@ export const Wrapper = styled.div`
     text-transform: uppercase;
     text-align: center;
   }
+
   p {
     font-weight: 400;
     font-size: 16px;
@@ -21,6 +23,20 @@ export const Wrapper = styled.div`
     text-align: center;
   }
 
+  @media ${device.laptopM} {
+    max-width: 400px;
+    h2 {
+      font-size: 25px;
+      line-height: 30px;
+    }
+  }
+  @media ${device.mobileX} {
+    max-width: 290px;
+    h2 {
+      font-size: 18px;
+      line-height: 30px;
+    }
+  }
 `;
 
 export const Container = styled.div`
@@ -45,11 +61,17 @@ export const Container = styled.div`
     text-align: center;
     color: var(--color-white);
     a {
-     cursor: pointer;
-     color:var(--color-blue);
-     padding-left: 6px;
+      cursor: pointer;
+      color: var(--color-blue);
+      padding-left: 6px;
     }
     margin-top: 16px;
+  }
+  @media ${device.mobileX} {
+    button[type="submit"] {
+      font-size: 16px;
+      padding: 5px 0;
+    }
   }
 `;
 export const InputColumns = styled.div`
@@ -147,7 +169,8 @@ export const InputContainer = styled.div`
 `;
 
 export const InputWrap = styled.input`
-  outline: ${(props) => props.error ? "1px solid red" : "1px solid var(--color-white)"};
+  outline: ${(props) =>
+    props.error ? "1px solid red" : "1px solid var(--color-white)"};
   border-radius: 8px;
   background-color: transparent;
   border: none;
@@ -160,6 +183,11 @@ export const InputWrap = styled.input`
     font-size: 14px;
     line-height: 24px;
     color: var(--color-white);
+  }
+  @media ${device.mobileX} {
+    min-height: 30px;
+    padding: 7px 40px 7px 16px;
+    font-size: 14px;
   }
 `;
 

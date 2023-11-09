@@ -4,7 +4,14 @@ import { ArrowLeftIcon, ArrowRightIcon } from "../Icons/Icons";
 import { SwiperCustomNav, Wrapper } from "./HeroBanner.styles";
 import { ImgWrapper } from "../../themes/GlobalStyle";
 import imageSwiper from "../../assets/images/swiperImg.png"
+import banner1 from "../../assets/images/banner1.jpeg"
+import banner2 from "../../assets/images/banner2.jpeg"
+import banner3 from "../../assets/images/banner3.jpeg"
+import banner4 from "../../assets/images/banner4.jpeg";
+import banner5 from "../../assets/images/banner5.jpeg";
 import "swiper/swiper-bundle.css";
+
+const imgBanners = [banner1, banner2, banner3, banner4, banner5];
 const HeroBanner = () => {
   const swiperRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -35,10 +42,10 @@ const HeroBanner = () => {
           type: "fraction",
         }}
       >
-        {[...Array(10)].map((_, index) => {
+        {imgBanners.map((item, index) => {
           return (
             <SwiperSlide key={index}>
-              <ImgWrapper src={imageSwiper} />
+              <ImgWrapper src={item} />
             </SwiperSlide>
           );
         })}
@@ -50,7 +57,7 @@ const HeroBanner = () => {
         <div>
           <p>{currentSlide + 1}</p>
           <p>/</p>
-          <p>{[...Array(10)].length}</p>
+          <p>{imgBanners.length}</p>
         </div>
         <button onClick={goNext}>
           <ArrowRightIcon />

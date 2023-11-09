@@ -15,7 +15,9 @@ const Notifications = () => {
           <button>Maintenance</button>
           <button>Profile</button>
         </BtnWrap>
-        <NotificationsTable />
+        <div style={{overflowX:"auto"}}>
+            <NotificationsTable />
+        </div>
       </Wrapper>
     </>
   );

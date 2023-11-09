@@ -1,8 +1,19 @@
 import styled from "styled-components";
 
+
+
 export const Wrapper = styled.section`
-  max-width: 1084px;
+  padding: 0 15px;
+`;
+
+export const Container = styled.div`
+  max-width: 1124px;
   width: 100%;
-  padding: 24px 15px 106px 15px;
+  padding: 24px 30px 106px 30px;
   margin: 0 auto;
+  position: relative;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  background-color: #151515;
+  border-radius: 8px;
 `;

@@ -138,6 +138,41 @@ export const getUserDetails = createAsyncThunk(
   }
 );
 
+export const changeBallance = createAsyncThunk(
+  "user/changeBallance",
+  async (id, { rejectWithValue }) => {
+    try {
+      
+      // configure authorization header with user's token
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const { data } = await axiosInstance.post(
+        `${API_ENDPOINT}get-user-by-id`,
+        {
+          user_id: id,
+        },
+        config
+      );
+      
+      const user = TokenService.getUser();
+      const newUser = { ...user.user, ...data.message.user };
+      TokenService.updateUser(newUser);
+      return data.message.user;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+
 export const getUsersByRole = createAsyncThunk(
   "user/getUsersByRole",
   async (role = "", { rejectWithValue, dispatch }) => {

@@ -1,6 +1,6 @@
 import React from 'react'
 // Styles
-import {Wrapper} from "./Profile.styles"
+import {Container, Wrapper} from "./Profile.styles"
 import Title from '../../../components/Title/Title'
 import AccountDetails from '../../../components/AccountDetails/AccountDetails'
 // import PersonalDetails from '../../../components/PersonalDetails/PersonalDetails'
@@ -8,13 +8,16 @@ import AccountDetails from '../../../components/AccountDetails/AccountDetails'
 // import WalletDetails from '../../../components/WalletDetails'
 const Profile = () => {
   return (
-    <Wrapper>
+<Wrapper>
+    <Container>
       <Title title={'PROFILE'}/>
       <AccountDetails />
       {/* <PersonalDetails /> */}
       {/* <WalletDetails /> */}
       {/* <PasswordDetails /> */}
-    </Wrapper>
+    </Container>
+
+</Wrapper>
   )
 }
 

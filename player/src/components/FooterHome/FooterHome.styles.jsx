@@ -13,15 +13,19 @@ export const Footer = styled.div`
   line-height: 20px;
   text-align: center;
   color: #ffffff;
-  div, .platform {
+  position: relative;
+  padding-left: 15px;
+  padding-right: 15px;
+  div,
+  .platform {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
-    gap:32px;
+    gap: 32px;
     margin-top: 10px;
-    a{
+    a {
       text-decoration: underline;
     }
-    }
+  }
 `;

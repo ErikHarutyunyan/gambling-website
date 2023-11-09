@@ -5,6 +5,7 @@ export const Wrapper = styled.section`
   width: 100%;
   padding: 24px 15px 106px 15px;
   margin: 0 auto;
+  position: relative;
 `;
 export const BtnWrap = styled.div`
   display: flex;

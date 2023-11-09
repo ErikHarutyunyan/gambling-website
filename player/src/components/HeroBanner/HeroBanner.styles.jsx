@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../themes/Breakpoints";
 export const Wrapper = styled.div`
   position: relative;
   .swiper {
@@ -24,21 +25,21 @@ export const Wrapper = styled.div`
 `;
 
 export const SwiperCustomNav = styled.div`
- position: absolute;
-    left: 50%;
-    right: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    bottom: 5%;
-    display: flex;
-    width: 100%;
-    max-width: 200px;
-    justify-content: center;
-    background: rgb(24, 27, 32);
-    opacity: 0.8;
-    border-radius: 12px;
-    padding: 13px 12px;
-    justify-content: space-between;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  bottom: 5%;
+  display: flex;
+  width: 100%;
+  max-width: 200px;
+  justify-content: center;
+  background: rgb(24, 27, 32);
+  opacity: 0.8;
+  border-radius: 12px;
+  padding: 13px 12px;
+  justify-content: space-between;
   div {
     display: flex;
     font-size: 18px;
@@ -47,10 +48,33 @@ export const SwiperCustomNav = styled.div`
     display: flex;
     align-items: center;
     gap: 5px;
-    p:first-child{
+    p:first-child {
       font-size: 32px;
       line-height: 40px;
       font-weight: 500;
     }
+  }
+  @media ${device.tablet} {
+    bottom: 0;
+    max-width: 130px;
+    padding: 8px 5px;
+    gap: 16px;
+    justify-content: center;
+    div {
+      font-size: 16px;
+      p:first-child {
+        font-size: 20px;
+        line-height: 40px;
+        font-weight: 500;
+      }
+    }
+    button {
+      svg {
+        width: 20px;
+      }
+    }
+  }
+  @media ${device.mobileX} {
+   zoom:.7;
   }
 `;

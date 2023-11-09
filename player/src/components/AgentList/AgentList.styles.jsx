@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import { device } from "../../themes/Breakpoints";
 
 export const Wrapper = styled.section`
   max-width: 1084px;
   width: 100%;
   padding: 24px 15px 106px;
   margin: 0px auto;
+  position: relative;
   h2 {
     margin: 50px 0;
   }
@@ -18,7 +20,6 @@ export const Wrapper = styled.section`
       border-radius: 8px;
       th {
         border-bottom: 1px solid var(--color-white);
-
       }
       tr {
         th {
@@ -65,6 +66,16 @@ export const Wrapper = styled.section`
       border-right: 1px solid #fff;
       :last-child {
         border-right: 0;
+      }
+    }
+    @media ${device.tabletL} {
+     
+      th,
+      td {
+        font-size: 12px;
+        padding: 10px 10px 10px 10px;
+        border-right: 1px solid #fff;
+        
       }
     }
   }

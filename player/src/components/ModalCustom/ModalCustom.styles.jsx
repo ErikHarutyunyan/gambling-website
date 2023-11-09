@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../themes/Breakpoints";
 export const Wrapper = styled.div`
   position: fixed;
   z-index: 99;
@@ -11,6 +12,7 @@ export const Wrapper = styled.div`
   background-color: #21252a80;
   opacity: ${(props) => (props.isOpen ? 1 : 0)};
   transition: opacity 0.1s linear;
+  padding: 0 15px;
 `;
 
 export const Container = styled.div`
@@ -42,4 +44,11 @@ export const BtnWrap = styled.div`
   align-items: center;
   justify-content: center;
 
+  @media ${device.mobileX} {
+    width: 25px;
+    height: 25px;
+    svg {
+      width: 10px;
+    }
+  }
 `;

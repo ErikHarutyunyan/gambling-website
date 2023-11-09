@@ -14,7 +14,7 @@ const ContactUs = () => {
             <Item key={item.id}>
               <QRCode
                 value={item.url}
-                size={110}
+                
                 bgColor={"#ffffff"}
                 fgColor={"#000000"}
               />
